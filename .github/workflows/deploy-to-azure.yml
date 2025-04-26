@@ -1,4 +1,4 @@
-name: CI/CD: Build, Test, Deploy Node.js App to Azure
+name: "CI/CD: Build, Test, Deploy Node.js App to Azure"
 
 on:
   push:
