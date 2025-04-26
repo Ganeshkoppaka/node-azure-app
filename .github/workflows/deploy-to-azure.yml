@@ -1,4 +1,4 @@
-name: "CI/CD: Build, Test, Deploy Node.js App to Azure"
+name: Build, Test and Deploy Node.js App to Azure
 
 on:
   push:
@@ -21,16 +21,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run basic tests
+      - name: Run Tests (CI)
         run: npm test
 
-      - name: Azure Login
+      - name: Azure Login (using SP)
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy to Azure Web App
+      - name: Deploy to Azure Web App (CD)
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'mycompany-webapp'   # Replace with your App Service name
+          app-name: 'mycompany-webapp'
           package: '.'
